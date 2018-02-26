@@ -1,0 +1,51 @@
+<div id="toolbar-area" [class.shadow]="appService.toolbarShadow">
+  <div id="container">
+    <span class="route-title"  routerLink="/home">InviteMe.me
+    </span>
+    <div style="flex:1"></div>
+    <button mat-button color="primary" style="margin-left: auto;" routerLink="/account">
+      Account
+    </button>
+  </div>
+</div>
+<div id="site-container" (scroll)="appService.checkScrollHeight()">
+
+    <div class="window-cont">
+      <div class="img-cont"><img class="home-image" src="assets/pimHome.png"></div>
+      <div id="body">
+        <div class="view-port">
+          <div class="image-cont">
+            <span id="title">The perfect invite tool, and 100% free.</span>
+            <p>Weddings, birthday parties, or your own special event, InviteMe.me is perfect for any occasion. 
+              Create an invite, add a registry and we'll give you a link to share and printing options to make invites even easier. 
+            One stop shop for you, and everyone you care about enough to invite to your special get-together.</p>
+            <button class="start" mat-raised-button color="primary"  routerLink="/account">GET STARTED</button>
+          </div>
+        </div>
+        
+        <div class="technologies">
+          <div class="tech">
+            <img class="tech-image" src="assets/contract.png">
+            <div class="tech-desc">
+              Make one simple invitation. We will generate a link that you can then share with all your friends.
+            </div>
+          </div>
+          <div class="seperator"></div>
+          <div class="tech">
+            <img class="tech-image" src="assets/target.png">
+            <div class="tech-desc">
+              <!--We made it easy to link a registry (or more!), simply add the registry url and everyone will have a one-stop-shop to RSVP to your event and buy directly from your registry.  -->
+              create links to target so users can shop directly for you online. One stop shop for you and the consumer.
+            </div>
+          </div>
+          <div class="seperator"></div>
+          <div class="tech">
+            <img class="tech-image" src="assets/printer.png">
+            <div class="tech-desc">
+              When you are ready to send invites, simply print all attendees to easily adress envelopes.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

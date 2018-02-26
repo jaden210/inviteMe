@@ -1,0 +1,43 @@
+.width {
+    max-width: 800px;
+    margin: auto;
+}
+
+.header {
+    font-size: 24px;
+    margin: 12px 24px;
+    color: #666666;
+    display: flex;
+    align-items: center;
+}
+
+#lists {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#button {
+    margin: 12px 0;
+    align-self: flex-end;
+}
+
+.list-item {
+    background-color: #ffffff;
+    padding: 12px 24px;
+    height: 56px;
+    box-sizing: border-box;
+    display: flex;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    color: #212121;
+}
+
+.list-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

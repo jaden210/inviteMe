@@ -1,0 +1,77 @@
+<div id="window">
+  <div *ngIf="!submitted; else: thankYou">
+    <div id="title">Get invited to {{list.name}}'s {{list.type}}!</div>
+    <div class="info">Fill out the information below to put your name on their special list</div>
+    <form id="form" (ngSubmit)="submitForm()" #form="ngForm">
+      <mat-button-toggle-group name="applicantTypes" [(ngModel)]="register.applicantType">
+        <mat-button-toggle [value]="'single'" (click)="register.headCount = 1">Single</mat-button-toggle>
+        <mat-button-toggle [value]="'couple'" (click)="register.headCount = 2">Couple</mat-button-toggle>
+        <mat-button-toggle [value]="'family'" (click)="register.headCount = 3">Family</mat-button-toggle>
+      </mat-button-toggle-group>
+      <div class="tab" [ngSwitch]="register.applicantType">
+        <ng-container *ngSwitchCase="'single'">
+          <mat-form-field class="wide">
+            <input matInput type="text" name="fname" placeholder="first name" [(ngModel)]="register.firstName">
+          </mat-form-field>
+        </ng-container>
+        <ng-container *ngSwitchCase="'couple'">
+          <mat-form-field class="wide">
+            <input matInput type="text" name="fname" placeholder="your first name" [(ngModel)]="register.firstName">
+          </mat-form-field>
+          <mat-form-field class="wide">
+            <input matInput type="text" name="soname" placeholder="partners first name" [(ngModel)]="register.partnerFirstName">
+          </mat-form-field>
+        </ng-container>
+      </div>
+      <mat-form-field class="wide">
+        <input matInput required type="text" name="lname" placeholder="last name" [(ngModel)]="register.lastName">
+      </mat-form-field>
+      <mat-form-field class="wide">
+        <input matInput required type="number" name="headCount" placeholder="head count" [(ngModel)]="register.headCount">
+      </mat-form-field>
+      <div class="row">
+        <span class="lablel">Save the stamp. Request an email invitation instead.</span>
+        <mat-slide-toggle name="emailRequest" [(ngModel)]="register.emailRequest"></mat-slide-toggle>
+      </div>
+      <ng-container *ngIf="register.emailRequest">
+        <mat-form-field class="wide">
+          <input matInput required type="email" name="email" placeholder="email" [(ngModel)]="register.email">
+        </mat-form-field>
+      </ng-container>
+      <ng-container *ngIf="!register.emailRequest">
+        <mat-form-field class="wide">
+          <input matInput required type="text" name="address" placeholder="street" [(ngModel)]="register.street">
+        </mat-form-field>
+        <mat-form-field class="wide">
+          <input matInput required type="text" name="city" placeholder="city" [(ngModel)]="register.city">
+        </mat-form-field>
+        <mat-form-field class="wide">
+          <mat-select class="field" name="state" placeholder="State" [(ngModel)]="register.state">
+            <mat-option *ngFor="let state of _states.states" [value]="state.abbreviation">{{state.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="wide">
+          <input matInput required type="text" name="zip" placeholder="zip" [(ngModel)]="register.zip">
+        </mat-form-field>
+      </ng-container>
+      <button mat-raised-button [disabled]="!form.form.valid" color="primary" type="submit">SUBMIT</button>
+    </form>
+  </div>
+  <ng-template #thankYou>
+  <div id="title">
+    You're on the list! 
+  </div>
+  </ng-template>
+    <div id="registry" *ngIf="list.targetUrl !== null || list.amazonUrl !== null">
+      <div class="info">{{list.name}} set up a registry! Shop now and help'em out.</div>
+      <div class="registry">
+        <div class="button" *ngIf="list.targetUrl" (click)="affiliateToRegistry(list.targetUrl)">
+          <img class="btn-img" src="assets/target.png">
+        </div>
+        <div class="button" *ngIf="list.amazonUrl" (click)="affiliateToRegistry(list.amazonUrl)">
+          <img class="btn-img" src="assets/amazon.png">
+        </div>
+      </div>
+    </div>
+    
+</div>

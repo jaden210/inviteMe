@@ -1,0 +1,13 @@
+<div class="width">
+  <div class="header">
+    <span class="header-text">Your Lists</span>
+    <div style="flex:1"></div>
+    <button mat-raised-button id="button" color="primary" (click)="navList()">NEW LIST</button>
+  </div>
+  <div id="lists">
+    <div class="list-item" *ngFor="let list of listObservable | async" (click)="navList(list)">
+      <span class="list-name">{{list.name}}</span>
+      <span class="list-added">66 people added</span>
+    </div>
+  </div>
+</div>

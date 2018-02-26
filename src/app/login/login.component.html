@@ -1,0 +1,38 @@
+<div class="login">
+    <div *ngIf="afAuth.authState | async; let user; else showLogin">
+      <h1>{{user.displayName}}</h1>
+        <button mat-button color="accent" class="logout" (click)="logout()">Logout</button>
+    </div>
+    <ng-template #showLogin>
+      <p class="sign-in">Sign In</p>
+      <div class="email-form">
+        <mat-form-field class="input-field">
+          <input required matInput type="email" autocomplete="on" [(ngModel)]="userLogin.username" placeholder="email">
+        </mat-form-field>
+        <mat-form-field class="input-field">
+          <input required matInput type="password" [(ngModel)]="userLogin.password" placeholder="password">
+        </mat-form-field>
+        <mat-form-field class="input-field" *ngIf="newUser">
+          <input required matInput type="text" [(ngModel)]="userLogin.name" placeholder="name">
+        </mat-form-field>
+        <span class="error">{{errorMessage}}</span>
+        <div class="button" (click)="loginEmail()" *ngIf="!newUser">
+          <mat-icon class="button-img">email</mat-icon>
+          <span class="button-text">Log In</span>
+        </div>
+        <div class="button" (click)="signUp()" *ngIf="newUser">
+          <span class="button-text">Create account</span>
+        </div>
+        <span class="sign-up" *ngIf="!newUser" (click)="newUser = true">sign-up</span>
+        <span class="sign-up" *ngIf="newUser" (click)="newUser = false">login</span>
+      </div>
+      <div id="row">
+        <div class="l-button" (click)="loginGoogle()">
+          <img class="l-button-img" src="/assets/google.png">
+        </div>
+        <div class="l-button" (click)="loginFacebook()">
+          <img class="l-button-img" src="/assets/facebook.png">
+        </div>
+      </div>
+    </ng-template>
+  </div>

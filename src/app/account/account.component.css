@@ -1,0 +1,41 @@
+#toolbar-area {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 5;
+    left: 0;
+}
+
+.shadow {
+    box-shadow: 0 2px 4px 0px #9e9e9e;
+}
+
+#container {
+    display: flex;
+    flex: 1;
+    height: 64px;
+    /* border-bottom: 1px solid #bdbdbd; */
+    align-items: center;
+    padding: 0 24px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+.route-title {
+    align-self: center;
+    font-size: 24px !important;
+    margin-right: 16px;
+    margin-left: 4px;
+    letter-spacing: 6px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#site-container {
+    width: 100vw;
+    height: calc(100vh - 64px);
+    overflow: auto;
+    margin-top: 64px;
+    background-color: #f7f7f7;
+  }

@@ -1,0 +1,80 @@
+<div class="width">
+  <div class="header">
+    <span class="header-text">Stats</span>
+    <div style="flex:1"></div>
+  </div>
+  <mat-card>
+    <mat-card-title>
+      {{list?.name}}'s {{list?.type}}
+    </mat-card-title>
+    <mat-card-content>
+      <div class="row left">
+        <span class="label">Total address submitted</span>
+        <span class="value">{{registersStats.count}}</span>
+      </div>
+      <div class="row left">
+        <span class="label">Total people attending</span>
+        <span class="value">{{registersStats.people}}</span>
+      </div>
+      <div class="row left">
+        <span class="label">Day's remaining until event</span>
+        <span class="value">10</span>
+      </div>
+      <div class="row left">
+        <span class="label">Day's remaining until Link expires</span>
+        <span class="value">10</span>
+      </div>
+      <div class="row left">
+        <span class="label">Target Url</span>
+        <mat-form-field class="value" floatPlaceholder="never">
+          <input matInput type="text" placeholder="https://target.com/..." [(ngModel)]="list.targetUrl" (blur)="updateList()">
+        </mat-form-field>
+      </div>
+      <div class="row left">
+        <span class="label">Amazon Url</span>
+        <mat-form-field class="value" floatPlaceholder="never">
+          <input matInput type="text" placeholder="https://amazon.com/..." [(ngModel)]="list.amazonUrl" (blur)="updateList()">
+        </mat-form-field>
+      </div>
+      <div class="row left">
+        <span class="label">Share link</span>
+        <span class="value">https://inviteme.me/add/{{listId}}</span>
+        <button mat-button color="primary" (click)="copyLink()">copy</button>
+        <button mat-raised-button color="primary" (click)="navLink()">VIEW</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="header">
+    <span class="header-text">Atendee's</span>
+    <div style="flex:1"></div>
+  </div>
+  <div id="lists">
+    <mat-accordion>
+      <mat-expansion-panel class="list-item" *ngFor="let register of registers | async">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{register.firstName ? register.firstName + ' ' + register.lastName : register.lastName}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{register.headCount}} in party
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="detail">
+          <div class="row">
+            <div class="label">Address</div>
+            <div style="flex:2"></div>
+            <div class="value">{{register.street}}</div>
+            <div class="value">{{register.city}},</div>
+            <div class="value">{{register.state}}</div>
+            <div class="value">{{register.zip}}</div>
+            <button mat-button color="primary" (click)="copyAddress(register)">copy</button>
+          </div>
+          <div class="row">
+            <div class="label">Remove from list</div>
+            <button mat-icon-button (click)="removeFromList(register)"><mat-icon>delete</mat-icon></button>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+{
+    "short_name": "Bookstore",
+    "name": "Pleasse Invite Me",
+    "start_url": "/?utm_source=homescreen",
+    "theme_color": "#00BCD4",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/assets/school512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

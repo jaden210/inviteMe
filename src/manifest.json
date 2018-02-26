@@ -1,0 +1,16 @@
+{
+    "short_name": "InviteMe",
+    "name": "InviteMe.me",
+    "start_url": "/?utm_source=homescreen",
+    "theme_color": "#a0dbdf",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/assets/inviteme.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

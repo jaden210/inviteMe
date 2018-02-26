@@ -1,0 +1,56 @@
+#form {
+}
+
+#toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 56px;
+    align-items: center;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+#width {
+    max-width: 800px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}
+
+#title {
+    font-size: 24px;
+    color: #212121;
+    margin: 24px 0;
+}
+
+#select {
+    background-color: #ffffff;
+    margin: 12px 0;
+}
+
+.tab {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 12px 0;
+    max-width: 680px;
+}
+
+#registry {
+    display: flex;
+    flex-direction: column;
+    margin: 24px 0;
+}
+
+.info {
+    color: #666666;
+    text-align: center;
+}
+
+.placeholder {
+    height: 24px;
+    vertical-align: text-top;
+}

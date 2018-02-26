@@ -1,0 +1,49 @@
+#window {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-size: 32px;
+    color: white;
+    align-items: center;
+    font-family: 'Dancing Script', cursive;
+    margin-top: -80px;
+}
+
+#title {
+    font-size: 72px;
+}
+
+.buttons {
+    position: absolute;
+    margin-top: 48px;
+    display: flex;
+    margin-top: 124px;
+}
+
+.button {
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 8px;
+    width: 175px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    cursor: pointer;
+}
+
+.button-image {
+    height: 40px;
+    box-sizing: border-box;
+}
+
+#image {
+    height: 100vh;
+    width: 100vw;
+}
