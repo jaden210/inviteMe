@@ -3,9 +3,7 @@
     <span class="route-title"  routerLink="/home">InviteMe.me
     </span>
     <div style="flex:1"></div>
-    <button mat-button color="primary" style="margin-left: auto;" routerLink="/account">
-      Account
-    </button>
+    <button mat-button color="primary" style="margin-left: auto;" routerLink="/account">Account</button>
   </div>
 </div>
 <div id="site-container" (scroll)="appService.checkScrollHeight()">
@@ -19,7 +17,7 @@
             <p>Weddings, birthday parties, or your own special event, InviteMe.me is perfect for any occasion. 
               Create an invite, add a registry and we'll give you a link to share and printing options to make invites even easier. 
             One stop shop for you, and everyone you care about enough to invite to your special get-together.</p>
-            <button class="start" mat-raised-button color="primary"  routerLink="/account">GET STARTED</button>
+            <button class="start" mat-raised-button color="primary"  (click)="getStarted()">GET STARTED</button>
           </div>
         </div>
         

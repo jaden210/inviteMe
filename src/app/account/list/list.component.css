@@ -56,6 +56,7 @@
     font-size: 17px;
     font-weight: 500;
     flex: 1;
+    white-space: nowrap;
 }
 
 .value {
@@ -63,6 +64,9 @@
     flex: 2;
     color: rgba(0, 0, 0, 0.54);
     font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .add-box {
@@ -97,8 +101,20 @@
     color: #666666;
 }
 
-@media (max-width: 760px) { 
+.phone-screen {
+    display: none;
+}
+
+@media (max-width: 760px) {
+    .row {
+        padding: 0 8px;
+    }
+
     .full-screen {
         display: none;
+    }
+
+    .phone-screen {
+        display: block;
     }
 }

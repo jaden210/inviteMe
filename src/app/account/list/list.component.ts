@@ -13,6 +13,7 @@ import * as jsPDF from 'jspdf'
 })
 export class ListComponent implements OnInit {
 
+  share: any = window.navigator;
   subscriber;
   listDoc: AngularFirestoreDocument<any>;
   list: List = new List();
@@ -70,6 +71,16 @@ export class ListComponent implements OnInit {
   }
 
   copyLink() {
+
+  }
+
+  shareLink() {
+    if (this.share.share !== undefined) {
+      this.share.share({
+        title: 'Your Invited!',
+        url: 'https://inviteme.me/add/' + this.listId
+      });
+    } 
 
   }
 

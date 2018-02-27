@@ -56,8 +56,9 @@
       <div class="row left">
         <span class="label">Share link</span>
         <span class="value">https://inviteme.me/add/{{listId}}</span>
-        <button mat-button color="primary" (click)="copyLink()">copy</button>
-        <button mat-raised-button color="primary" (click)="navLink()">VIEW</button>
+        <button mat-icon-button class="phone-screen action-button" color="primary" (click)="shareLink()"><mat-icon>share</mat-icon></button>
+        <button mat-icon-button color="primary" class="action-button" (click)="copyLink()"><mat-icon>content_copy</mat-icon></button>
+        <button mat-raised-button color="primary" (click)="navLink()">PREVIEW</button>
       </div>
     </mat-card-content>
   </mat-card>

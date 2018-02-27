@@ -2,17 +2,14 @@
   <div class="header">
     <span class="header-text">Account</span>
   </div>
-  <mat-card>
-    <mat-card-title style="display: flex">
-      {{accountService.userData?.displayName}}
-      <div style="flex:1"></div>
+  <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{accountService.userData?.displayName}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
       <button mat-button color="primary" (click)="logout()">LOGOUT</button>
-    </mat-card-title>
-    <mat-card-content>
-      <div class="row">
-      </div>
-    </mat-card-content>
-  </mat-card>
+  </mat-expansion-panel>
   <div class="spacer"></div>
   <div class="header">
     <span class="header-text">Lists</span>
@@ -23,7 +20,7 @@
     <div class="list-item" *ngFor="let list of listObservable | async" (click)="navList(list)">
       <span class="list-name">{{list.name}}</span>
       <span class="list-added">{{list.type}}</span>
-      <span class="list-added">{{getDate(list)}}</span>
+      <span class="list-added full-screen">{{getDate(list)}}</span>
     </div>
   </div>
 </div>

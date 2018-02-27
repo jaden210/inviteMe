@@ -15,6 +15,30 @@
   <link rel="manifest" href="/manifest.json">
 </head>
 <body style="margin:0px">
-  <app-root></app-root>
+  <app-root>
+      <div style="position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 110;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;">
+      <img style="height: 70px" src="/assets/inviteme.png">
+      </div>
+  </app-root>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114858134-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<noscript>
+  <h3 style="color: #673ab7; font-family: Helvetica; margin: 2rem;">
+    Sorry, but app is not available without javascript
+  </h3>
+</noscript>
 </body>
 </html>

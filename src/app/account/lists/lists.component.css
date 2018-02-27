@@ -49,3 +49,17 @@
 .list-added {
     color: rgba(0, 0, 0, 0.54);
 }
+
+@media (max-width: 760px) {
+    .row {
+        padding: 0 8px;
+    }
+
+    .full-screen {
+        display: none;
+    }
+
+    .phone-screen {
+        display: block;
+    }
+}

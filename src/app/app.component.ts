@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AppService } from './app.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { Router, NavigationEnd } from '@angular/router';
+declare var gtag: Function;
 
 @Component({
   selector: 'app-root',
@@ -10,5 +12,11 @@ import * as firebase from 'firebase/app';
 })
 export class AppComponent {
 
-  constructor(public afAuth: AngularFireAuth, public appService: AppService) {}
+  constructor(public afAuth: AngularFireAuth, public appService: AppService, public router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        gtag('config', 'UA-114677400-1', {'page_path': event.url});      
+      }
+    });
+  }
 }
