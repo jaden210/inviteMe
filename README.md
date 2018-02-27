@@ -35,3 +35,6 @@ more stats
 export to label pdf
 get on with target aff
 get on with bbb aff
+get on with kohls aff
+get on with walmart aff
+get on with amazon aff

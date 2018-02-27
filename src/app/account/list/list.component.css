@@ -1,6 +1,17 @@
+#toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 56px;
+    align-items: center;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
 .width {
     max-width: 800px;
     margin: auto;
+    padding: 8px;
 }
 
 .header {
@@ -12,6 +23,7 @@
 }
 
 #lists {
+    margin-bottom: 64px;
 }
 
 #button {
@@ -47,8 +59,46 @@
 }
 
 .value {
-    margin: 0 8px;
+    margin: 0 3px;
     flex: 2;
     color: rgba(0, 0, 0, 0.54);
     font-size: 15px;
+}
+
+.add-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,.54);
+    border-radius: 8px;
+    padding: 12px 40px 12px 12px;
+}
+
+.det-row {
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    padding: 24px 0;
+    flex-wrap: wrap;
+}
+
+.address {
+    display: flex;
+}
+
+.copy {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.action-button {
+    margin: 0 8px;
+    color: #666666;
+}
+
+@media (max-width: 760px) { 
+    .full-screen {
+        display: none;
+    }
 }

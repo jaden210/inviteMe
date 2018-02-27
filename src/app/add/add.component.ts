@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AngularFirestoreDocument, AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { UsStates } from '../states-dropdown';
-import { List } from '../app.service';
+import { List, Register } from '../app.service';
 
 @Component({
   selector: 'app-add',
@@ -61,19 +61,4 @@ export class AddComponent implements OnInit {
   ngOnInit() {
   }
 
-}
-
-export class Register {
-  applicantType: string = 'single';
-  firstName: string;
-  partnerFirstName: string;
-  lastName: string;
-  street: string;
-  city: string;
-  state: string;
-  zip: string;
-  listId: string;
-  headCount: number = 1;
-  emailRequest: boolean = false;
-  email: any;
 }

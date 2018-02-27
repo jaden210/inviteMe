@@ -24,6 +24,7 @@ export class AccountComponent implements OnInit {
         // User is signed in.
         this.accountService.user.next(user);
         this.accountService.userData = user;
+        
       } else {
         let dialog = this.dialog.open(LoginComponent)
       }

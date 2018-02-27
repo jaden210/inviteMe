@@ -26,11 +26,7 @@ export class NewComponent implements OnInit {
     this.list.userId = this.accountService.userData.uid;
     let body = JSON.parse(JSON.stringify(this.list));
     this.listCollection.add(body);
-    this.close();
-  }
-
-  close() {
-    this.router.navigate(['account']);
+    this.accountService.close();
   }
 
   ngOnInit() {

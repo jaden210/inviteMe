@@ -4,6 +4,7 @@ import { AccountService } from '../account.service';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-lists',
@@ -16,7 +17,7 @@ export class ListsComponent implements OnInit {
   listCollection: AngularFirestoreCollection<any>;
   listObservable: Observable<any[]>;
 
-  constructor(public accountService: AccountService, public db: AngularFirestore, public router: Router) { }
+  constructor(public accountService: AccountService, public db: AngularFirestore, public router: Router, public appService: AppService, public afAuth: AngularFireAuth) { }
 
   ngOnInit() {
     this.subscriber = this.accountService.user.subscribe(
@@ -40,12 +41,32 @@ export class ListsComponent implements OnInit {
       });
   }
 
+  getDate(list) {
+    if (list.date) {
+      let now = new Date();
+      let endDate = new Date(list.date);
+      let dis = endDate.getTime() - now.getTime();
+      if (dis > 0) {
+        let day = Math.floor( dis / 86400000);
+        let hour = Math.floor((dis % 86400000) / 3600000);
+        return day + 'd ' + hour + 'h till event';
+      } else return 'event is over';
+    }
+    return 'No end date';
+    
+  }
+
   navList(list?) {
     if (list) { // view/edit
       this.router.navigate(['account/list/' + list.id])
     } else { // create
       this.router.navigate(['account/list/new'])
     }
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
+    this.router.navigate(['/home']);
   }
 
 }

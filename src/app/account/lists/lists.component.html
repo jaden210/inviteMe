@@ -1,13 +1,29 @@
 <div class="width">
   <div class="header">
-    <span class="header-text">Your Lists</span>
+    <span class="header-text">Account</span>
+  </div>
+  <mat-card>
+    <mat-card-title style="display: flex">
+      {{accountService.userData?.displayName}}
+      <div style="flex:1"></div>
+      <button mat-button color="primary" (click)="logout()">LOGOUT</button>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="row">
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="spacer"></div>
+  <div class="header">
+    <span class="header-text">Lists</span>
     <div style="flex:1"></div>
     <button mat-raised-button id="button" color="primary" (click)="navList()">NEW LIST</button>
   </div>
   <div id="lists">
     <div class="list-item" *ngFor="let list of listObservable | async" (click)="navList(list)">
       <span class="list-name">{{list.name}}</span>
-      <span class="list-added">66 people added</span>
+      <span class="list-added">{{list.type}}</span>
+      <span class="list-added">{{getDate(list)}}</span>
     </div>
   </div>
 </div>

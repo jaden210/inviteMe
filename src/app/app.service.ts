@@ -34,5 +34,22 @@ export class List {
   city: any;
   state; any;
   zip: any;
-  
-  }
+}
+
+
+export class Register {
+  applicantType: string = 'single';
+  firstName: string;
+  partnerFirstName: string;
+  lastName: string;
+  street: string;
+  city: string;
+  state: string;
+  zip: string;
+  listId: string;
+  headCount: number = 1;
+  emailRequest: boolean = false;
+  email: string;
+  isPrinted: boolean = false;
+  isEmailed: boolean = false;
+}

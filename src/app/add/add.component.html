@@ -40,13 +40,16 @@
       </ng-container>
       <ng-container *ngIf="!register.emailRequest">
         <mat-form-field class="wide">
+          <input matInput type="email" name="email" placeholder="email" [(ngModel)]="register.email">
+        </mat-form-field>
+        <mat-form-field class="wide">
           <input matInput required type="text" name="address" placeholder="street" [(ngModel)]="register.street">
         </mat-form-field>
         <mat-form-field class="wide">
           <input matInput required type="text" name="city" placeholder="city" [(ngModel)]="register.city">
         </mat-form-field>
         <mat-form-field class="wide">
-          <mat-select class="field" name="state" placeholder="State" [(ngModel)]="register.state">
+          <mat-select required class="field" name="state" placeholder="State" [(ngModel)]="register.state">
             <mat-option *ngFor="let state of _states.states" [value]="state.abbreviation">{{state.name}}</mat-option>
           </mat-select>
         </mat-form-field>

@@ -34,7 +34,7 @@
     max-width: 500px;
     width: 100%;
     color: #666666;
-    margin-top: 24px;
+    margin: 24px 0 12px 0;
 }
 
 .wide {
@@ -63,4 +63,8 @@
 
 .btn-img {
     height: 100%;
+}
+
+input {
+    background-color: #ffffff !important;
 }

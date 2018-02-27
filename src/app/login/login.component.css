@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
+    width: 500px;
 }
 
 .sign-in {
@@ -24,8 +25,12 @@
     width: 100%;
     align-items: center;
     margin-bottom: 24px;
-    padding: 12px 0;
+    padding: 12px 24px;
     box-sizing: border-box;
+}
+
+.input-field {
+    width: 100%;
 }
 
 .button {
@@ -93,4 +98,10 @@
     padding: 0 12px;
     font-size: 12px;
     color: #F50057;
+}
+
+@media (max-width: 760px) { 
+    .login {
+        width: auto;
+    }
 }

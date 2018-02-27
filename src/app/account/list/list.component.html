@@ -1,3 +1,6 @@
+<div id="toolbar">
+    <button mat-icon-button (click)="accountService.close()"><mat-icon id="icon">arrow_back</mat-icon></button>
+  </div>
 <div class="width">
   <div class="header">
     <span class="header-text">Stats</span>
@@ -17,12 +20,18 @@
         <span class="value">{{registersStats.people}}</span>
       </div>
       <div class="row left">
-        <span class="label">Day's remaining until event</span>
-        <span class="value">10</span>
+        <span class="label">Event date</span>
+        <mat-form-field class="value">
+          <input matInput type="date" [(ngModel)]="list.date" (blur)="updateList()">
+          <mat-hint align="end">{{getDate(list)}}</mat-hint>
+        </mat-form-field>
       </div>
       <div class="row left">
-        <span class="label">Day's remaining until Link expires</span>
-        <span class="value">10</span>
+        <span class="label">Link experation date</span>
+        <mat-form-field class="value">
+          <input matInput type="date" [(ngModel)]="list.linkDate" (blur)="updateList()">
+          <mat-hint align="end">{{getLinkDate(list)}}</mat-hint>
+        </mat-form-field>
       </div>
       <div class="row left">
         <span class="label">Target Url</span>
@@ -35,6 +44,14 @@
         <mat-form-field class="value" floatPlaceholder="never">
           <input matInput type="text" placeholder="https://amazon.com/..." [(ngModel)]="list.amazonUrl" (blur)="updateList()">
         </mat-form-field>
+      </div>
+      <div class="row left">
+        <span class="label">Print all labels</span>
+        <button mat-button color="primary" (click)="print(3, 10, true)">1 x 2-5/8</button>
+      </div>
+      <div class="row left">
+        <span class="label">Print unprinted labels {{'(' + registersStats.unprinted + ')'}}</span>
+        <button mat-button color="primary" (click)="print(3, 10, false)">1 x 2-5/8</button>
       </div>
       <div class="row left">
         <span class="label">Share link</span>
@@ -52,26 +69,36 @@
     <mat-accordion>
       <mat-expansion-panel class="list-item" *ngFor="let register of registers | async">
         <mat-expansion-panel-header>
-          <mat-panel-title>
-            {{register.firstName ? register.firstName + ' ' + register.lastName : register.lastName}}
+          <mat-panel-title style="min-width: 162px;">
+            {{(register.firstName ? register.firstName + ' ' : '') + (register.partnerFirstName ? 'and ' + register.partnerFirstName + ' ' : '') + register.lastName}}
           </mat-panel-title>
-          <mat-panel-description>
-            {{register.headCount}} in party
+          <mat-panel-description class="full-screen">
+            {{register.headCount + ' in party'}}
+          </mat-panel-description>
+          <mat-panel-description class="full-screen">
+            {{register.emailRequest ? ' e-invite requested' : ''}}
           </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="detail">
-          <div class="row">
-            <div class="label">Address</div>
+          <div class="det-row">
+            <div class="add-box"  *ngIf="!register.emailRequest">
+              <button mat-icon-button color="primary" class="copy" (click)="copyAddress(register)"><mat-icon>content_copy</mat-icon></button>
+              <div class="value">{{(register.firstName ? register.firstName + ' ' : '') + (register.partnerFirstName ? 'and ' + register.partnerFirstName + ' ' : '') + register.lastName}}</div>
+              <div class="value">{{register.street}}</div>
+              <div class="address">
+                <div class="value">{{register.city}},</div>
+                <div class="value">{{register.state}}</div>
+                <div class="value">{{register.zip}}</div>
+              </div>
+            </div>
+            <div class="add-box"  *ngIf="register.emailRequest">
+              <button mat-icon-button color="primary" class="copy" (click)="copyEmail(register)"><mat-icon>content_copy</mat-icon></button>
+              <div class="value">{{register.email}}</div>
+            </div>
             <div style="flex:2"></div>
-            <div class="value">{{register.street}}</div>
-            <div class="value">{{register.city}},</div>
-            <div class="value">{{register.state}}</div>
-            <div class="value">{{register.zip}}</div>
-            <button mat-button color="primary" (click)="copyAddress(register)">copy</button>
-          </div>
-          <div class="row">
-            <div class="label">Remove from list</div>
-            <button mat-icon-button (click)="removeFromList(register)"><mat-icon>delete</mat-icon></button>
+            <button mat-icon-button class="action-button" *ngIf="register.emailRequest" matTooltip="send email invitation"><mat-icon>email</mat-icon></button>
+            <button mat-icon-button class="action-button" *ngIf="!register.emailRequest" matTooltip="print label"><mat-icon>print</mat-icon></button>
+            <button mat-icon-button class="action-button" (click)="removeFromList(register)" matTooltip="remove from list"><mat-icon>delete</mat-icon></button>
           </div>
         </div>
       </mat-expansion-panel>
