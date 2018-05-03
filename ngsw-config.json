@@ -5,6 +5,7 @@
       "installMode": "prefetch",
       "resources": {
         "files": [
+          "/favicon.ico",
           "/index.html"
         ],
         "versionedFiles": [
@@ -38,9 +39,9 @@
       ],
       "cacheConfig": {
         "maxSize": 100,
-        "maxAge": "1h",
+        "maxAge": "1d",
         "timeout": "10s",
-        "strategy": "freshness"
+        "strategy": "performance"
       }
     }, {
       "name": "api-performance",

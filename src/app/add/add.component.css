@@ -47,6 +47,7 @@
     align-items: center;
     justify-content: space-evenly;
     margin: 36px 0;
+    flex-wrap: wrap;
 }
 
 .button {
@@ -59,6 +60,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 12px;
 }
 
 .btn-img {
@@ -67,4 +69,21 @@
 
 input {
     background-color: #ffffff !important;
+}
+
+.ad {
+    align-self: center;
+    font-size: 13px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0;
+    height: 20px;
+    width: 100%;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 12px;
+}
+
+a {
+    color: blue;
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AngularFirestoreDocument, AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { UsStates } from '../states-dropdown';
-import { List, Register } from '../app.service';
+import { List, Register, AppService } from '../app.service';
 
 @Component({
   selector: 'app-add',
@@ -21,8 +21,9 @@ export class AddComponent implements OnInit {
   register: Register = new Register();
   listId: any;
   submitted: boolean = false;
+  linkExpired: boolean = false;
 
-  constructor(public route: ActivatedRoute, public db: AngularFirestore, public _states: UsStates) { 
+  constructor(public route: ActivatedRoute, public db: AngularFirestore, public _states: UsStates, public appService: AppService) { 
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.listId = params.get("id");
       if (this.listId) { // gets list data
@@ -31,6 +32,10 @@ export class AddComponent implements OnInit {
         this.listDoc.valueChanges().subscribe(
           list => {
             this.list = list;
+            let now = new Date(); // check link date
+            let endDate = new Date(list.linkDate);
+            let dis = endDate.getTime() - now.getTime();
+            if (dis < 0) this.linkExpired = true;
         });
         localStorage.getItem("InviteMe" + this.listId) ? this.submitted = true : null;
         }
@@ -45,14 +50,22 @@ export class AddComponent implements OnInit {
     this.registerCollection.add(body);
   }
 
-  affiliateToRegistry(registry) {
+  affiliateToRegistry(link) {
+    // try and sumbit first
     let routeUrl: string;
-    switch (registry.type) {
+    switch (link) {
       case 'target':
-      routeUrl = registry.url;
+      if (this.list.targetUrl.substring(0, 4) == 'http') {
+        routeUrl = this.list.targetUrl + this.appService.targetAffUrl;
+      } else {
+        routeUrl = 'http://' + this.list.targetUrl + this.appService.targetAffUrl;
+      }
       break;
       case 'amazon':
-      routeUrl = registry.url;
+      routeUrl = this.list.amazonUrl + this.appService.amazonAffUrl;
+      break;
+      case 'walmart':
+      routeUrl = this.appService.walmartAffUrl.replace('*', this.list.walmartUrl);
       break;
     }
     window.open(routeUrl);    

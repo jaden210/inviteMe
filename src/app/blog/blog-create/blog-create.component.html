@@ -1,0 +1,24 @@
+<div id="create">
+  <mat-form-field>
+    <input matInput placeholder="blog entry title" [(ngModel)]="blog.title">
+  </mat-form-field>
+  <div id="topics">
+    <mat-form-field class="chip-list">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let topic of blog.topics" color="primary" [selectable]="true" [removable]="true" (remove)="removeTopic(topic)">
+          {{topic.name}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="blog topics"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="true"
+        (matChipInputTokenEnd)="addTopic($event)" />
+      </mat-chip-list>
+    </mat-form-field>
+  </div>
+  <mat-form-field>
+    <textarea matInput placeholder="blog entry" matTextareaAutosize matAutosizeMinRows="6" [(ngModel)]="blog.body"></textarea>
+  </mat-form-field>
+  <button style="align-self: flex-end" mat-raised-button color="primary" (click)="createBlog()">CREATE</button>
+</div>

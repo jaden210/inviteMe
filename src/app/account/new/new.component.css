@@ -13,17 +13,20 @@
 
 #width {
     max-width: 800px;
-    padding: 0 24px;
+    padding: 24px;
     display: flex;
     align-items: center;
     flex-direction: column;
     margin: auto;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 24px;
 }
 
 #title {
     font-size: 24px;
     color: #212121;
-    margin: 24px 0;
+    margin: 12px 0;
 }
 
 #select {
@@ -53,4 +56,12 @@
 .placeholder {
     height: 24px;
     vertical-align: text-top;
+}
+
+@media (max-width: 760px) {
+
+    #form {
+        margin: 12px;
+    }
+
 }

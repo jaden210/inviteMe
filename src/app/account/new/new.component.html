@@ -1,10 +1,9 @@
-<div id="form">
+<form id="form" (ngSubmit)="submitForm()" #form="ngForm">
   <div id="toolbar">
     <button mat-icon-button (click)="accountService.close()"><mat-icon id="icon">arrow_back</mat-icon></button>
-    <button mat-raised-button color="primary" (click)="createList()">CREATE</button>
   </div>
   <div id="width">
-    <div id="title">Create a new list</div>
+    <div id="title">Create a new Event</div>
     <mat-button-toggle-group id="select" name="applicantTypes" [(ngModel)]="list.type">
       <mat-button-toggle [value]="'wedding'">Wedding</mat-button-toggle>
       <mat-button-toggle [value]="'party'">Party</mat-button-toggle>
@@ -13,60 +12,51 @@
     <div class="tab" [ngSwitch]="list.type">
       <ng-container *ngSwitchCase="'wedding'">
         <mat-form-field>
-          <input matInput type="text" required placeholder="who's getting hitched?" [(ngModel)]="list.name">
+          <input matInput type="text" required name="name" placeholder="who's getting hitched?" [(ngModel)]="list.name">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="date" required placeholder="wedding date" [(ngModel)]="list.date">
+          <input matInput type="date" required name="date" placeholder="wedding date" [(ngModel)]="list.date">
         </mat-form-field>
       </ng-container>
       <ng-container *ngSwitchCase="'party'">
         <mat-form-field>
-          <input matInput type="text" required placeholder="name of the party" [(ngModel)]="list.name">
+          <input matInput type="text" required name="name" placeholder="name of the party" [(ngModel)]="list.name">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="date" required placeholder="party date" [(ngModel)]="list.date">
+          <input matInput type="date" required name="date" placeholder="party date" [(ngModel)]="list.date">
         </mat-form-field>
       </ng-container>
       <ng-container *ngSwitchCase="'event'">
         <mat-form-field>
-          <input matInput type="text" required placeholder="name of the event" [(ngModel)]="list.name">
+          <input matInput type="text" required name="name" placeholder="name of the event" [(ngModel)]="list.name">
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="date" required placeholder="event date" [(ngModel)]="list.date">
+          <input matInput type="date" required name="date" placeholder="event date" [(ngModel)]="list.date">
         </mat-form-field>
       </ng-container>
       <mat-form-field>
-        <input matInput type="time" pattern="[0-9]{2}:[0-9]{2}" required placeholder="event time" [(ngModel)]="list.time">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="date" required placeholder="the link will be active until this date" [(ngModel)]="list.linkDate">
-      </mat-form-field>
-      <span class="info">This info will not be shown in the invitation.</span>
-      <mat-form-field>
-        <input matInput type="text" required placeholder="event address" [(ngModel)]="list.address">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="text" required placeholder="city" [(ngModel)]="list.linkDate">
-      </mat-form-field>
-      <mat-form-field>
-          <mat-select class="field" name="state" placeholder="State" [(ngModel)]="list.state">
-            <mat-option *ngFor="let state of _states.states" [value]="state.abbreviation">{{state.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      <mat-form-field>
-        <input matInput type="date" required placeholder="zip" [(ngModel)]="list.zip">
+        <input matInput type="date" required name="linkDate" placeholder="last day for guests to register" [(ngModel)]="list.linkDate">
       </mat-form-field>
     </div>
     <div id="registry">
-      <div class="info">Add your rigistry url here and all your guests will have direct access to the things you need.</div>
+      <div class="info">Add your registry url here and all your guests will have direct access to the things you need.</div>
       <mat-form-field>
         <mat-placeholder><img class="placeholder" src="assets/target.png"> target url</mat-placeholder>
-        <input matInput type="text" [(ngModel)]="list.targetUrl">
+        <input matInput name="target" type="text" [(ngModel)]="list.targetUrl">
       </mat-form-field>
       <mat-form-field>
         <mat-placeholder><img class="placeholder" src="assets/amazon.png"> amazon url</mat-placeholder>
-        <input matInput type="text" [(ngModel)]="list.amazonUrl">
+        <input matInput name="amazon" type="text" [(ngModel)]="list.amazonUrl">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-placeholder><img class="placeholder" src="assets/walmart.png"> walmart url</mat-placeholder>
+        <input matInput name="amazon" type="text" [(ngModel)]="list.walmartUrl">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-placeholder><img class="placeholder" src="assets/zola.svg"> zola url</mat-placeholder>
+        <input matInput name="amazon" type="text" [(ngModel)]="list.zolaUrl">
       </mat-form-field>
     </div>
+    <button mat-raised-button [disabled]="!form.form.valid" color="primary" type="submit">CREATE</button>
   </div>
-</div>
+</form>

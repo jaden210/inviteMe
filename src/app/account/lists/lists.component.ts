@@ -30,7 +30,7 @@ export class ListsComponent implements OnInit {
   }
 
   getLists() {
-    this.listCollection = this.db.collection<List>('list', ref => ref.where("userId", "==", this.accountService.userData.uid));
+    this.listCollection = this.db.collection<List>('list', ref => ref.where("userId", "==", this.accountService.userData.uid)); // order
     this.listObservable = this.listCollection.snapshotChanges()
       .map(actions => {
         return actions.map(a => {

@@ -1,0 +1,11 @@
+div#create {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+mat-form-field {
+    width: 100%;
+}

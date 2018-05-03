@@ -1,3 +1,7 @@
+span {
+    font-family: 'Indie+Flower' !important;
+}
+
 #toolbar {
     width: 100%;
     display: flex;
@@ -19,11 +23,12 @@
     margin: 60px 0 24px 0;
     color: #666666;
     display: flex;
-    align-items: center;
+    align-items: baseline;
 }
 
 #lists {
     margin-bottom: 64px;
+    min-height: 500px;
 }
 
 #button {
@@ -32,6 +37,10 @@
 }
 
 .list-item {
+}
+
+.card {
+    border-radius: 8px;
 }
 
 .list-name {
@@ -50,6 +59,10 @@
 
 .left {
     justify-content: flex-start;
+}
+
+.wrap {
+    flex-wrap: wrap;
 }
 
 .label {

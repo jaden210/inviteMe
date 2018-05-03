@@ -28,6 +28,7 @@
 }
 
 .list-item {
+    cursor: pointer;
     background-color: #ffffff;
     padding: 12px 24px;
     height: 56px;

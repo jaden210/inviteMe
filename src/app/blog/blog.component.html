@@ -1,0 +1,14 @@
+<div id="toolbar-area" [class.shadow]="appService.toolbarShadow">
+  <div id="container">
+    <span class="route-title" routerLink="/home">InviteMe.me
+    </span>
+    <div style="flex:1"></div>
+    <button mat-button color="primary" style="margin-left: auto;" routerLink="/account">
+      Account
+    </button>
+  </div>
+</div>
+
+<div id="site-container" (scroll)="appService.checkScrollHeight()">
+<router-outlet></router-outlet>
+</div>

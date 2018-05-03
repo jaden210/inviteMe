@@ -1,5 +1,5 @@
-<div id="window">
-  <div *ngIf="!submitted; else: thankYou">
+<div id="window" *ngIf="!linkExpired; else expired">
+  <div *ngIf="!submitted; else thankYou">
     <div id="title">Get invited to {{list.name}}'s {{list.type}}!</div>
     <div class="info">Fill out the information below to put your name on their special list</div>
     <form id="form" (ngSubmit)="submitForm()" #form="ngForm">
@@ -27,7 +27,7 @@
         <input matInput required type="text" name="lname" placeholder="last name" [(ngModel)]="register.lastName">
       </mat-form-field>
       <mat-form-field class="wide">
-        <input matInput required type="number" name="headCount" placeholder="head count" [(ngModel)]="register.headCount">
+        <input matInput required type="number" name="headCount" placeholder="number in party" [(ngModel)]="register.headCount">
       </mat-form-field>
       <div class="row">
         <span class="lablel">Save the stamp. Request an email invitation instead.</span>
@@ -65,16 +65,30 @@
     You're on the list! 
   </div>
   </ng-template>
-    <div id="registry" *ngIf="list.targetUrl !== null || list.amazonUrl !== null">
+    <div id="registry" *ngIf="list.targetUrl !== null || list.amazonUrl !== null || list.walmartUrl !== null">
       <div class="info">{{list.name}} set up a registry! Shop now and help'em out.</div>
       <div class="registry">
-        <div class="button" *ngIf="list.targetUrl" (click)="affiliateToRegistry(list.targetUrl)">
+        <div class="button" *ngIf="list.targetUrl" (click)="affiliateToRegistry('target')">
           <img class="btn-img" src="assets/target.png">
         </div>
-        <div class="button" *ngIf="list.amazonUrl" (click)="affiliateToRegistry(list.amazonUrl)">
+        <div class="button" *ngIf="list.amazonUrl" (click)="affiliateToRegistry('amazon')">
           <img class="btn-img" src="assets/amazon.png">
+        </div>
+        <div class="button" *ngIf="list.walmartUrl" (click)="affiliateToRegistry('walmart')">
+          <img class="btn-img" src="assets/walmart.png">
+        </div>
+        <div class="button" *ngIf="list.zolaUrl" (click)="affiliateToRegistry('zola')">
+          <img class="btn-img" src="assets/zola.svg">
         </div>
       </div>
     </div>
-    
-</div>
+    <div class="filler"></div>
+    <div class="ad" onclick="location.href='https://inviteme.me'">Have an upcoming wedding, party or event? Use <a>InviteMe.me</a> it's free!</div>
+  </div>
+  <ng-template #expired>
+    <div id="window">
+      <div id="title">Looks like this link has expired!</div>
+      <div class="filler"></div>
+      <div class="ad" onclick="location.href='https://inviteme.me'">Have an upcoming wedding, party or event? Use <a>InviteMe.me</a> it's free!</div>
+  </div>
+</ng-template>

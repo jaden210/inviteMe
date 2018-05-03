@@ -38,3 +38,9 @@ get on with bbb aff
 get on with kohls aff
 get on with walmart aff
 get on with amazon aff
+
+
+
+FAQ Page
+
+add  note to person to track what they got you. DONE

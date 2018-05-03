@@ -12,9 +12,9 @@
   </mat-expansion-panel>
   <div class="spacer"></div>
   <div class="header">
-    <span class="header-text">Lists</span>
+    <span class="header-text">Events</span>
     <div style="flex:1"></div>
-    <button mat-raised-button id="button" color="primary" (click)="navList()">NEW LIST</button>
+    <button mat-raised-button id="button" color="primary" (click)="navList()">NEW EVENT</button>
   </div>
   <div id="lists">
     <div class="list-item" *ngFor="let list of listObservable | async" (click)="navList(list)">

@@ -1,0 +1,4 @@
+<div id="blogs" *ngFor="let blog of blogObservable | async" (click)="viewBlog(blog)">
+{{blog.title}}  
+</div>
+works

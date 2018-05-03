@@ -19,6 +19,7 @@ import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './login/login.component';
 import { AppService } from './app.service';
 import { AccountModule } from './account/account.module';
+import { BlogModule } from './blog/blog.module';
 
 
 
@@ -39,8 +40,11 @@ import { AccountModule } from './account/account.module';
     AppRoutingModule,
     MaterialModule,
     AccountModule,
+    BlogModule,
     BrowserAnimationsModule,
-    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : []
+    ServiceWorkerModule.register("/ngsw-worker.js", {
+      enabled: environment.production
+    }),
   ],
   providers: [AppService],
   bootstrap: [AppComponent],

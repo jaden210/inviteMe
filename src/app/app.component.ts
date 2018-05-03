@@ -15,7 +15,7 @@ export class AppComponent {
   constructor(public afAuth: AngularFireAuth, public appService: AppService, public router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        gtag('config', 'UA-114677400-1', {'page_path': event.url});      
+        gtag('config', 'UA-114858134-1', {'page_path': event.url});
       }
     });
   }
